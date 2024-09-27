@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcula Descuentos | KodePrint</title>
+    <title>Estadistica | KodePrint</title>
     <!-- Font Awesome -->
     <link href="https://kit-pro.fontawesome.com/releases/v5.15.3/css/pro.min.css" rel="stylesheet">
     <!-- Fuentes -->
@@ -13,11 +13,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Gabriela&display=swap" rel="stylesheet">
     <!-- Estilos -->
+    <!-- JQueryConfirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <!-- Navbar y Footer -->
     <link rel="stylesheet" href="./css/index/index.css">
-    <!-- Descuentos -->
-    <link rel="stylesheet" href="./css/descuentos/styles.css">
-    <link rel="stylesheet" href="./css/descuentos/stylesTablet.css" media="(min-width: 1024px)">
+    <!-- Estilos de figuras -->
+    <link rel="stylesheet" href="./css/estadisticas/styles.css">
+    <link rel="stylesheet" href="./css/estadisticas/stylesTablet.css" media="(min-width: 1024px)">
 </head>
 
 <body>
@@ -55,39 +57,34 @@
     <!-- Contenido Principal -->
     <main>
         <section>
-            <div class="titleContainer">
-                <img src="./assets/discount.svg" alt="">
-                <h1>Calcula un precio con descuento..!</h1>
-                <p>Este es el segundo taller de curso practico de JS</p>
+            <div class="calculador">
+                <div class="title">
+                    <img src="./assets/math.png" alt="">
+                    <h1>Calculos Estadisticos</h1>
+                </div>
+                <p class="subtitle"><span class="s-1">Promedio</span> | <span class="s-2">Mediana</span> | <span class="s-3">Moda</span></p>
+                <div class="container">
+                    <div class="inputs">
+                        <p>Ingresa un numero para sumarlo a la lista..!</p>
+                        <input id="inputNumber" type="number" required>
+                        <button type="button" onclick="sendToList()"><i class="fad fa-plus"></i>Agregar</button>
+                    </div>
+                    <span class="lista">Mi Lista: <span id="miLista"></span></span>
+                    <button class="calculaeBtn" onclick="calcularEstadisticas()">
+                        <i class="fal fa-calculator-alt"></i> Calcular
+                    </button>
+                    <button class="nuevoBtn disabled" disabled onclick="reiniciarVariables()">
+                        <i class="fas fa-eraser"></i> Reiniciar
+                    </button>
+                </div>
+                <div class="respuestas">
+                    <p class="promedio"><b>Promedio: </b><span class="respPromedio"></span></p>
+                    <div>
+                        <p class="mediana"><b>Mediana: </b><span class="respMediana"></span></p>
+                        <p class="moda"><b>Moda: </b><span class="respModa"></span></p>
+                    </div>
+                </div>
             </div>
-            <form class="formCalcular" action="">
-                <h2><i class="far fa-tags"></i>Clacula el Precio..!</h2>
-                <span>Ingresa un precio con porcentaje de descuento y calcula el precio a pagar..!</span>
-                <div class="descuentoForm_cupon">
-                    <label>Tienes un Cupon:</label>
-                    <button id="cuponBtn" type="button"><span></span></button>
-                </div>
-                <div class="descuentoForm_input">
-                    <input type="number" id="inputPrice" onkeypress="" required min="0" step="0.01">
-                    <label><span>Precio:</span></label>
-                </div>
-                <div class="descuentoForm_input porcentContainer">
-                    <input type="number" class="porcent" onkeyup="return valNum(event)" id="inputPorcent" required max="99" min="0" step="0.01">
-                    <label><span>Descuento / No mayor a 100:</span></label>
-                </div>
-                <div class="descuentoForm_input cuponContainer">
-                    <input type="text" class="cupon" onkeyup="return valNum(event)" id="inputCupon" required>
-                    <label><span>Ingresa el codigo del cupon:</span></label>
-                </div>
-                <button type="button" class="btnCalcular" onclick="calcularDescuento()">
-                    <span id="span1"></span>
-                    <span id="span2"></span>
-                    <span id="span3"></span>
-                    <span id="span4"></span>
-                    Calcular
-                </button>
-                <p id="resultPrecio" class="resultado"></p>
-            </form>
         </section>
     </main>
     <!-- Pie de Pagina -->
@@ -102,8 +99,8 @@
         </div>
     </footer>
     <!-- scripts -->
-    <script src="./js/descuento.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/estadisticas.js"></script>
 </body>
 
 </html>
